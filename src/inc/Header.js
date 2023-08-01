@@ -1,6 +1,16 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import Home from "../pages/Home";
+import Blogs from "../pages/Blogs";
+import Contact from "../pages/Contact";
+import NoPage from "../pages/NoPage";
+
 function Header() {
   return (
     <>
+    <BrowserRouter>
+      
     <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">
       <div class="header-container d-flex align-items-center justify-content-between">
@@ -12,11 +22,10 @@ function Header() {
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="#about">About</a></li>
-            <li><a class="nav-link scrollto" href="#services">Services</a></li>
-            <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-            <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/blogs">Blogs</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+           
             <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="#">Drop Down 1</a></li>
@@ -43,6 +52,15 @@ function Header() {
       </div>
     </div>
   </header>
+  <Routes>
+        
+          <Route path="/" exact element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        
+  </Routes>
+  </BrowserRouter>
     </>
   );
 }
